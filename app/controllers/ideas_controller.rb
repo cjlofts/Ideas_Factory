@@ -1,4 +1,5 @@
 class IdeasController < ApplicationController
+  before_action :authenticate_user! , except: [:index, :show]
 
   def index
     @ideas = Idea.all
@@ -14,7 +15,7 @@ class IdeasController < ApplicationController
   end
 
   def create
-    @idea = Idea.new(require_params)
+    @idea = current_user.ideas.new(require_params)
 
     if @idea.save
       redirect_to root_path

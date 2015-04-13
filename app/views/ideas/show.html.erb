@@ -2,6 +2,8 @@
 
 <p><%= @idea.body %></p>
 
+<p><strong>By: </strong><%= @idea.user.name_display %></p>
+
 <div>
   <div class="show-edit">
     <%= button_to "Edit" , edit_idea_path(@idea) , method: :get %>
@@ -41,6 +43,7 @@
 
 <% @idea.comments.each do |c| %>
   <p><%= c.body %></p>
+  <p>By <%= c.user.name_display %> at <%= c.updated_at %></p>
   <%= link_to "Edit", edit_idea_comment_path(@idea, c) %>
   |
   <%= link_to "Delete", idea_comment_path(@idea, c), method: :delete, data: {confirm: "Are you sure?"} %>
