@@ -1,0 +1,22 @@
+<%= form_for [@idea, @comment], :html => {:class => "form-horizontal"} do |c| %>
+
+  <% if @comment.errors.any? %>
+  <ul>
+    <% @comment.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+  <% end %>
+
+  <div class="form-group">
+    <%= c.label :body, "Comment:", class: "col-sm-1 control-label" %>
+    <div class="col-sm-10">
+      <%= c.text_area :body, class: "form-control", rows: "1" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-1 col-sm-10">
+      <%= c.submit "Edit", class: "btn btn-default" %>
+    </div>
+  </div>
+<% end %>
