@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   resources :ideas do
     resources :comments
     resources :joins
+    resources :likes
   end
 
-  resources :joins, only: [:index]
-
+  resources :likes, only: [:index, :show]
 end

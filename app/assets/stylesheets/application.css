@@ -30,7 +30,17 @@
 
  .join-button {
   float: left;
+  margin-right: 10px;
  }
+
+.like-button {
+  float: left;
+}
+
+.like-button-liked {
+  float: left;
+  color: green;
+}
 
  .members-likes {
    float: right;

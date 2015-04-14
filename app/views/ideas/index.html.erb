@@ -19,8 +19,18 @@
   </div>
   <% end %>
 
+  <% if user_signed_in? && idea.like_for(current_user) %>
+  <div class='like-button-liked'>
+    <%= button_to "Unlike", idea_like_path(idea, idea.like_for(current_user)), method: :delete %>
+  </div>
+  <% else %>
+  <div class='like-button'>
+    <%= button_to "Like", idea_likes_path(idea), method: :post %>
+  </div>
+  <% end %>
+
   <div class="members-likes">
-    <p><strong>Members: </strong><%= idea.joins.count %>
+    <p><strong>Members: </strong><%= idea.joins.count %> | <strong>Likes: </strong><%= idea.likes.count %></p>
   </div>
   <br>
   <hr>
