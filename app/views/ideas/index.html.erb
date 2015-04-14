@@ -2,11 +2,27 @@
 <hr>
 
 <div class="ideas-home">
-<% @ideas.each do |i| %>
-  <p><strong>Title: </strong><%= link_to i.title, idea_path(i) %></p>
-  <p><strong>Body: </strong><%= i.body %></p>
-  <p><strong>By: </strong><%= i.user.name_display %></p>
+<% @ideas.each do |idea| %>
+  <p><strong>Title: </strong><%= link_to idea.title, idea_path(idea) %></p>
+  <p><strong>Body: </strong><%= idea.body %></p>
+  <div class="idea-author">
+    <p><strong>By: </strong><%= idea.user.name_display %></p>
+  </div>
+
+  <% if user_signed_in? && idea.join_for(current_user) %>
+  <div class='join-button'>
+    <%= button_to "Joined", idea_join_path(idea, idea.join_for(current_user)), method: :delete %>
+  </div>
+  <% else %>
+  <div class='join-button'>
+    <%= button_to "Join", idea_joins_path(idea), method: :post %>
+  </div>
+  <% end %>
+
+  <div class="members-likes">
+    <p><strong>Members: </strong><%= idea.joins.count %>
+  </div>
+  <br>
   <hr>
 <% end %>
 </div>
-

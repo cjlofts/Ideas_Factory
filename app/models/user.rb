@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
-  has_many :posts, dependent: :destroy
+  has_many :ideas, dependent: :destroy
   has_many :comments, dependent: :destroy
+
+  has_many :joins, dependent: :destroy
+  has_many :joined_ideas, through: :joins, source: :idea
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

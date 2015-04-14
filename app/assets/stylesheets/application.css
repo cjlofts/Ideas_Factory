@@ -22,3 +22,16 @@
  .sign-in {
   float: right;
  }
+
+ .idea-author {
+  float: left;
+  margin-right: 10px;
+ }
+
+ .join-button {
+  float: left;
+ }
+
+ .members-likes {
+   float: right;
+ }

@@ -8,6 +8,7 @@ class IdeasController < ApplicationController
   def show
     find_idea
     @comment = Comment.new
+    @users = @idea.joined_users
   end
 
   def new
